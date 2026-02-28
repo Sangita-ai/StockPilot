@@ -1,0 +1,27 @@
+[
+    {
+        "ticker": "AAPL",
+        "quantity": 4,
+        "buy_price": 0.08
+    },
+    {
+        "ticker": "GOOG",
+        "quantity": 10,
+        "buy_price": 200.0
+    },
+    {
+        "ticker": "AAPL",
+        "quantity": 10,
+        "buy_price": 200.0
+    },
+    {
+        "ticker": "AAPL",
+        "quantity": 10,
+        "buy_price": 200.0
+    },
+    {
+        "ticker": "GOOG",
+        "quantity": 10,
+        "buy_price": 200.0
+    }
+]

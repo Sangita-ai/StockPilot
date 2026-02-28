@@ -1,0 +1,14 @@
+[
+    {
+        "ticker": "",
+        "target": 0.0
+    },
+    {
+        "ticker": "12",
+        "target": 17.0
+    },
+    {
+        "ticker": "AAPL",
+        "target": 300.0
+    }
+]
