@@ -27,7 +27,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-st.markdown('<div class="title">🚀 StockPilot </div>', unsafe_allow_html=True)
+st.markdown('<div class="title">StockPilot </div>', unsafe_allow_html=True)
 st.markdown('<div class="subtitle">AI-Powered Market Intelligence Terminal</div>', unsafe_allow_html=True)
 st.divider()
 

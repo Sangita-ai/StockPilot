@@ -1,10 +1,11 @@
 from newsapi import NewsApiClient
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+from textblob import TextBlob
 
 
 NEWS_API_KEY = "dccc3cec502a4c62b8e5573f656fc7e8"
 
-newsapi = NewsApiClient(api_key=NEWS_API_KEY)
+newsapi = NewsApiClient(api_key="dccc3cec502a4c62b8e5573f656fc7e8")
 analyzer = SentimentIntensityAnalyzer()
 
 
@@ -34,3 +35,24 @@ def get_news_sentiment(ticker: str):
         "score": round(avg_score, 3),
         "label": label
     }
+
+
+
+
+api = NewsApiClient(api_key="dccc3cec502a4c62b8e5573f656fc7e8")
+
+def get_news_sentiment(ticker):
+    articles = api.get_everything(q=ticker, language="en")
+    score = 0
+    count = 0
+
+    for a in articles["articles"]:
+        if a["description"]:
+            blob = TextBlob(a["description"])
+            score += blob.sentiment.polarity
+            count += 1
+
+    avg = score / count if count else 0
+    label = "Bullish" if avg > 0 else "Bearish" if avg < 0 else "Neutral"
+
+    return {"label": label, "score": avg}

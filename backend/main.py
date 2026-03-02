@@ -149,3 +149,9 @@ def add_price_alert(ticker: str, target: float):
 def check_price_alerts():
     return check_alerts()
 
+@app.post("/webhook/alert")
+def webhook_alert(data: dict):
+    ticker = data.get("ticker")
+    target = float(data.get("target"))
+    add_alert(ticker, target)
+    return {"status": "Webhook alert added"}

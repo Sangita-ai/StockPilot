@@ -35,28 +35,25 @@ def add_alert(ticker, target):
     save_alerts(alerts)
 
 
+from ai_engine.alert_utils import send_telegram_alert
+
 def check_alerts():
+    triggered = []
+    
     try:
         alerts = load_alerts()
-        triggered = []
-
         for alert in alerts:
-            df = get_stock_data(alert["ticker"])
-
-            if df is None or df.empty:
-                continue
-
-            price = float(df["Close"].iloc[-1])
-
-            if price >= alert["target"]:
-                triggered.append({
-                    "ticker": alert["ticker"],
-                    "target": alert["target"],
-                    "current_price": price
-                })
+            ticker = alert["ticker"]
+            target = alert["target"]
+            current_price = get_stock_data(ticker)
+            
+            if current_price >= target:
+                message = f"{ticker} reached target {target}"
+                send_email_alert("receiver@email.com", "Stock Alert", message)
+                send_telegram_alert(message)
+                triggered.append(alert)
 
         return triggered
-
     except Exception as e:
         print("ALERT ERROR:", e)
         return []
