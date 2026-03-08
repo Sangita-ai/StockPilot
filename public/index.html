@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>StockPilot</title>
+</head>
+
+<body>
+
+<h1>StockPilot Dashboard</h1>
+
+<input id="ticker" placeholder="Enter ticker (AAPL)">
+<button onclick="analyze()">Analyze</button>
+
+<pre id="result"></pre>
+
+<script>
+
+async function analyze(){
+
+let ticker=document.getElementById("ticker").value;
+
+let res=await fetch("/api/analyze/"+ticker);
+
+let data=await res.json();
+
+document.getElementById("result").innerText=
+JSON.stringify(data,null,2);
+
+}
+
+</script>
+
+</body>
+</html>
