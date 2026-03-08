@@ -12,7 +12,7 @@ import datetime
 from data_pipeline.stock_fetcher import get_stock_data
 from ai_engine.technical_analysis import add_indicators
 
-API_URL = "http://127.0.0.1:8000"
+API_URL = "https://stockpilot-backend.onrender.com"
 
 
 st.set_page_config(layout="wide", page_title="StockPilot")
