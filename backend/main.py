@@ -1,6 +1,12 @@
-from fastapi import FastAPI
+
 import math
 
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+from fastapi import FastAPI
 from data_pipeline.stock_fetcher import get_stock_data, get_basic_info
 from ai_engine.technical_analysis import add_indicators, generate_signal
 from ai_engine.predictor import predict_next_price
